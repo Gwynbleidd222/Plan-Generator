@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #20212C;
+}
+
+.scrollbar-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  select {
+    @apply bg-dark-gray text-white rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-main-purple hover:border-main-purple transition-colors;
+  }
