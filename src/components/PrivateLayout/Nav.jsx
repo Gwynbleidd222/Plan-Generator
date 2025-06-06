@@ -5,6 +5,7 @@ import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { CiTimer } from 'react-icons/ci'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate, Link } from 'react-router-dom'
+import { IoPersonOutline } from "react-icons/io5";
 
 const Nav = () => {
 	const [error, setError] = useState('')
@@ -47,6 +48,11 @@ const Nav = () => {
 						0
 					</p>
 				</li>
+				<Link
+					to='/' 
+					className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>
+					<IoPersonOutline className='text-white text-3xl' />
+				</Link>
 				<li
 					onClick={handleLogout}
 					className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>
