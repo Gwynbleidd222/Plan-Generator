@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import exerciseData from '../../dataExercise'
 import Modal from './Modal'
+import { Link } from 'react-router-dom'
 
 const ExerciseGenerator = () => {
 	const [selectedWeakness, setSelectedWeakness] = useState('')
@@ -30,9 +31,25 @@ const ExerciseGenerator = () => {
 	}
 
 	return (
-		<div className=' text-white h-screen flex items-center justify-center'>
-			<div className=' bg-dark-gray'>
-				<div className='w-full p-6 text-center  rounded-lg shadow-lg'>
+		<section className=' text-white flex items-centr justify-center h-screen flex-col lg:flex-row'>
+			<div className='flex w-full flex-col place-content-center place-items-center pt-8 lg:h-full lg:bg-gradient-to-r from-neutral-700 to-gray-900 lg:w-1/2'>
+				<div className=' px-4'>
+					<div className='max-w-[432px] mx-auto lg:max-w-[592px]'>
+						<h2 className='text-3xl mb-2 lg:mb-4'>
+							Wygeneruj ćwiczenie pod swoje słabości
+							<div className='flex items-center text-lg'></div>
+						</h2>
+						<p className='break-words'>Wybierz słabość boju i typ ćwiczenia</p>
+						<p className='break-words mt-2'>
+							<Link to='/plan-generator' className='font-bold text-main-purple hover:underline'>
+								Wygeneruj plan treningowy
+							</Link>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div className=' flex w-full flex-col place-content-center place-items-center pt-8 lg:h-full  lg:w-1/2'>
+				<div className='p-6 text-center  rounded-lg shadow-lg bg-dark-gray'>
 					<h3 className='text-4xl'>Generator Ćwiczeń</h3>
 					<div className='p-2 mt-6'>
 						<p className='text-left p-2'>Słabość boju</p>
@@ -87,7 +104,7 @@ const ExerciseGenerator = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }
 
