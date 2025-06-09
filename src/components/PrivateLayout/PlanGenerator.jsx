@@ -56,6 +56,10 @@ const PlanGenerator = () => {
 
 			try {
 				const weaknesses = [squatData.label, benchData.label, deadliftData.label]
+				const schemeNameMap = {
+					PowerliftingThreeDayPlan: '3 dni - FBW',
+					PowerliftingWodyn: '3 dniowy plan (Wodyn)',
+				}
 				const wrappedPlan = {
 					days: Object.entries(plan)
 						.sort(([dayA], [dayB]) => {
@@ -67,7 +71,7 @@ const PlanGenerator = () => {
 							exercises: exercises,
 						})),
 				}
-				await saveTrainingPlan(wrappedPlan, selectedScheme, weaknesses)
+				await saveTrainingPlan(wrappedPlan, schemeNameMap[selectedScheme], weaknesses)
 				console.log('dni treningowe: ', wrappedPlan)
 			} catch (error) {
 				console.error('Nie udało się zapisać planu:', error)
@@ -141,7 +145,7 @@ const PlanGenerator = () => {
 							onChange={e => setSelectedScheme(e.target.value)}
 							className='w-full p-2 mt-2 text-sm '>
 							<option value=''>-- wybierz --</option>
-							<option value='PowerliftingThreeDayPlan'>3 dniowy plan</option>
+							<option value='PowerliftingThreeDayPlan'>3 dni - FBW</option>
 							<option value='PowerliftingWodyn'>3 dniowy plan (Wodyn)</option>
 						</select>
 					</div>

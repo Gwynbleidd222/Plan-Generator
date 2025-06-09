@@ -58,8 +58,8 @@ const SavedPlans = () => {
 					</div>
 				</div>
 			</div>
-
-			<div className='w-full  2xl:w-1/2 p-4 max-h-[90vh] '>
+			
+			<div className='w-full 2xl:w-1/2 p-4 max-h-[90vh] '>
 				{isLoading ? (
 					<div className='flex justify-center items-center h-full'>
 						<ThreeDots fill='#fff' className='w-12 h-12' />
@@ -72,20 +72,20 @@ const SavedPlans = () => {
 								className=' p-4 m-4 bg-dark-gray text-center rounded-xl  max-w-[432px] w-full shadow-lg'>
 								<h3 className='text-3xl mb-2 lg:mb-4'>{plan.name}</h3>
 								<p>Zastosowane filtry:</p>
-								<div className='mt-8 flex flex-col justify-center sm:items-center gap-4'>
-									<div className='flex items-center flex-col gap-4 '>
-										{plan.weaknesses.slice(0, 2).map((weakness, index) => (
+								<div className='mt-8 flex justify-center sm:items-center gap-4'>
+									<div className='flex flex-wrap items-center justify-center gap-4 '>
+										{plan.weaknesses.map((weakness, index) => (
 											<span
 												key={index}
-												className='p-2 text-sm w-48 rounded-full font-bold text-center border border-indigo-500'>
+												className='flex items-center justify-center p-2 text-sm w-48 h-[60px] rounded-full font-bold  border  border-indigo-500'>
 												{weakness}
 											</span>
 										))}
-										{plan.weaknesses[2] && (
+										{/* {plan.weaknesses[2] && (
 										<span className='flex p-2 text-sm w-48 rounded-full font-bold text-center border border-indigo-500'>
 											{plan.weaknesses[2]}
 										</span>
-									)}
+									)} */}
 									</div>
 
 									

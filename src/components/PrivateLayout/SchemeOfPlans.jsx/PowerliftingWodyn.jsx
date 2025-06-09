@@ -1,7 +1,7 @@
 import { getRandomFromArray } from '../../../exerciseUtilis'
 
 const PowerliftingWodyn = (squat, bench, deadlift, back, core, foreArms) => {
-	const usedExercises = new Set();
+	const usedExercises = new Set()
 
 	return {
 		day1: [
@@ -9,7 +9,7 @@ const PowerliftingWodyn = (squat, bench, deadlift, back, core, foreArms) => {
 			getRandomFromArray(deadlift.types?.wariacja, usedExercises),
 			getRandomFromArray(bench.types?.akcesoryjne, usedExercises),
 			getRandomFromArray(squat.types?.izolowane, usedExercises),
-			getRandomFromArray(core.core, usedExercises)
+			getRandomFromArray(core.core, usedExercises),
 		].filter(Boolean),
 
 		day2: [
@@ -17,7 +17,7 @@ const PowerliftingWodyn = (squat, bench, deadlift, back, core, foreArms) => {
 			getRandomFromArray(squat.types?.wariacja, usedExercises),
 			getRandomFromArray(bench.types?.izolowane, usedExercises),
 			getRandomFromArray(deadlift.types?.izolowane, usedExercises),
-			getRandomFromArray(core.core, usedExercises)
+			getRandomFromArray(core.core, usedExercises),
 		].filter(Boolean),
 
 		day3: [
@@ -30,7 +30,7 @@ const PowerliftingWodyn = (squat, bench, deadlift, back, core, foreArms) => {
 			getRandomFromArray(foreArms.biceps, usedExercises),
 			getRandomFromArray(foreArms.triceps, usedExercises),
 		].filter(Boolean),
-	};
-};
+	}
+}
 
-export default PowerliftingWodyn;
+export default PowerliftingWodyn
