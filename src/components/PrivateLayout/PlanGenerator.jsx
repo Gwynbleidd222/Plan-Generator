@@ -3,10 +3,13 @@ import exerciseData from '../../dataExercise'
 import { independentExercises } from '../../dataExercise'
 import PowerliftingThreeDayPlan from './SchemeOfPlans.jsx/PowerliftingThreeDayPlan'
 import PowerliftingWodyn from './SchemeOfPlans.jsx/PowerliftingWodyn'
+import PowerliftingFourDayPlan from './SchemeOfPlans.jsx/PowerliftingFourDayPlan'
+import PowerliftingUpperLowerPlan from './SchemeOfPlans.jsx/PowerliftingUpperLowerPlan'
 import Modal from './Modal'
 import { useAuth } from '../../context/AuthContext'
 import { ThreeDots } from 'react-loading-icons'
 import { saveTrainingPlan } from '../../firebaseUtilis'
+import { Link } from 'react-router-dom'
 
 const PlanGenerator = () => {
 	const [squatWeakness, setSquatWeaknes] = useState('')
@@ -38,6 +41,8 @@ const PlanGenerator = () => {
 
 		const schemeMap = {
 			PowerliftingThreeDayPlan: PowerliftingThreeDayPlan,
+			PowerliftingFourDayPlan: PowerliftingFourDayPlan,
+			PowerliftingUpperLowerPlan: PowerliftingUpperLowerPlan,
 			PowerliftingWodyn: PowerliftingWodyn,
 		}
 
@@ -58,6 +63,8 @@ const PlanGenerator = () => {
 				const weaknesses = [squatData.label, benchData.label, deadliftData.label]
 				const schemeNameMap = {
 					PowerliftingThreeDayPlan: '3 dni - FBW',
+					PowerliftingFourDayPlan: '4 dni - FBW',
+					PowerliftingUpperLowerPlan: '4 dni - Góra Dół',
 					PowerliftingWodyn: '3 dniowy plan (Wodyn)',
 				}
 				const wrappedPlan = {
@@ -92,9 +99,25 @@ const PlanGenerator = () => {
 	}
 
 	return (
-		<div className='text-white h-screen flex items-center justify-center'>
-			<div className='bg-dark-gray'>
-				<div className='w-full p-6 text-center  rounded-lg shadow-lg'>
+		<section className='text-white flex items-centr justify-center h-screen flex-col lg:flex-row '>
+			<div className='flex w-full flex-col place-content-center place-items-center mt-28 lg:-mt-0 pt-8 lg:h-full lg:bg-gradient-to-r from-neutral-700 to-gray-900 lg:w-1/2'>
+				<div className=' px-4'>
+					<div className='max-w-[432px] mx-auto lg:max-w-[592px]'>
+						<h2 className='text-3xl mb-2 lg:mb-4'>
+							Wygeneruj swój plan treningowy
+							<div className='flex items-center text-lg'></div>
+						</h2>
+						<p className='break-words'>
+							Wybierz swoje słabości do każdego boju, następnie wybierz schemat treningowy i wygeneruj plan
+						</p>
+						<Link to='/exercise-generator' className='font-bold text-main-purple hover:underline'>
+							Wygeneruj ćwiczenie
+						</Link>
+					</div>
+				</div>
+			</div>
+			<div className='flex w-full flex-col place-content-center place-items-center pt-8 lg:h-full  lg:w-1/2'>
+				<div className='p-4 m-4 bg-dark-gray rounded-xl flex flex-col max-w-[432px] w-full shadow-l text-center'>
 					<h3 className='text-4xl'>Generator Planów</h3>
 					<div className='p-2 mt-6'>
 						<p className='text-left p-2'>Słabość w przysiadzie</p>
@@ -147,6 +170,8 @@ const PlanGenerator = () => {
 							<option value=''>-- wybierz --</option>
 							<option value='PowerliftingThreeDayPlan'>3 dni - FBW</option>
 							<option value='PowerliftingWodyn'>3 dniowy plan (Wodyn)</option>
+							<option value='PowerliftingFourDayPlan'>4 dni - FBW</option>
+							<option value='PowerliftingUpperLowerPlan'>4 dni - Góra Dół</option>
 						</select>
 					</div>
 					<div className='mt-6'>
@@ -185,7 +210,7 @@ const PlanGenerator = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }
 
