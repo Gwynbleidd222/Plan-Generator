@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from './Header'
+import { BiShowAlt } from 'react-icons/bi'
+import { BiHide } from 'react-icons/bi'
 
 const Signup = () => {
 	const emailRef = useRef()
@@ -11,6 +13,16 @@ const Signup = () => {
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
 	const navigate = useNavigate()
+	const [show, setShow] = useState(false)
+	const [showConfirm, setShowConfirm] = useState(false)
+
+	const showPassword = () => {
+		setShow(prev => !prev)
+	}
+
+	const showPasswordConfirm = () => {
+		setShowConfirm(prev => !prev)
+	}
 
 	async function handleSubmit(e) {
 		e.preventDefault()
@@ -62,29 +74,47 @@ const Signup = () => {
 								className='w-full p-2 bg-dark-gray rounded-lg border border-medium-gray hover:border-main-purple outline-none focus:outline-main-purple transition-colors'
 							/>
 						</div>
-						<div className='flex flex-col'>
+						<div className='relative flex flex-col'>
 							<label className='p-2 mt-4' htmlFor='password'>
 								Hasło:
 							</label>
 							<input
-								type='password'
+								type={show ? 'text' : 'password'}
 								id='password'
 								required
 								ref={passwordRef}
-								className='w-full p-2 bg-dark-gray rounded-lg border border-medium-gray hover:border-main-purple outline-none focus:outline-main-purple transition-colors'
+								className=' w-full p-2 bg-dark-gray rounded-lg border border-medium-gray hover:border-main-purple outline-none focus:outline-main-purple transition-colors'
 							/>
+							<button 
+								type='button' 
+								onClick={showPassword} className='absolute inset-y-0 top-10 right-0 mt-4'>
+								{show ? (
+									<BiHide className='w-8 h-8 text-main-purple' />
+								) : (
+									<BiShowAlt className='w-8 h-8 text-main-purple' />
+								)}
+							</button>
 						</div>
-						<div className='flex flex-col'>
+						<div className='relative flex flex-col'>
 							<label className='p-2 mt-4' htmlFor='password-confirm'>
 								Powtórz hasło:
 							</label>
 							<input
-								type='password'
+								type={showConfirm ? 'text' : 'password'}
 								id='password-confirm'
 								required
 								ref={passwordConfirmRef}
 								className='w-full p-2 bg-dark-gray rounded-lg border border-medium-gray hover:border-main-purple outline-none focus:outline-main-purple transition-colors'
 							/>
+							<button 
+								type='button' 
+								onClick={showPasswordConfirm} className='absolute inset-y-0 top-10 right-0 mt-4'>
+								{showConfirm ? (
+									<BiHide className='w-8 h-8 text-main-purple' />
+								) : (
+									<BiShowAlt className='w-8 h-8 text-main-purple' />
+								)}
+							</button>
 						</div>
 						{error && <p className='mt-2 text-center text-red'>{error}</p>}
 						<button

@@ -1,6 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { auth } from '../firebase'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, updatePassword, updateEmail } from 'firebase/auth'
+import {
+	createUserWithEmailAndPassword,
+	onAuthStateChanged,
+	signInWithEmailAndPassword,
+	signOut,
+	sendPasswordResetEmail,
+	updatePassword,
+	updateEmail,
+} from 'firebase/auth'
 
 const AuthContext = React.createContext()
 
@@ -9,58 +17,54 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState()
-    const [loading, setLoading] = useState(true)
-    const [isLoading, setIsLoading] = useState(false)
-    
-    function signup(email, password) {
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
+	const [currentUser, setCurrentUser] = useState()
+	const [loading, setLoading] = useState(true)
+	const [isLoading, setIsLoading] = useState(false)
 
-    function login(email, password) {
-        return signInWithEmailAndPassword(auth, email, password)
-    }
+	function signup(email, password) {
+		return createUserWithEmailAndPassword(auth, email, password)
+	}
 
-    function logout() {
-        return signOut(auth)
-    }
+	function login(email, password) {
+		return signInWithEmailAndPassword(auth, email, password)
+	}
 
-    function resetPassword (email) {
-        return sendPasswordResetEmail(auth, email)
-    }
+	function logout() {
+		return signOut(auth)
+	}
 
-    function updateEmailUser(email) {
-        return updateEmail(auth.currentUser, email)
-    }
+	function resetPassword(email) {
+		return sendPasswordResetEmail(auth, email)
+	}
 
-    function updatePasswordUser(password) {
-        return updatePassword(auth.currentUser ,password)
-    }
+	function updateEmailUser(email) {
+		return updateEmail(auth.currentUser, email)
+	}
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user)
-            setLoading(false)
-        })
+	function updatePasswordUser(password) {
+		return updatePassword(auth.currentUser, password)
+	}
 
-        return unsubscribe
-    }, [])
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, user => {
+			setCurrentUser(user)
+			setLoading(false)
+		})
 
-    const value = {
-        currentUser,
-        signup,
-        login,
-        logout,
-        resetPassword,
-        updateEmailUser,
-        updatePasswordUser,
-        isLoading,
-        setIsLoading
-    }
+		return unsubscribe
+	}, [])
 
-	return (
-        <AuthContext.Provider value={value}>
-            {!loading && children}
-        </AuthContext.Provider>
-    )
+	const value = {
+		currentUser,
+		signup,
+		login,
+		logout,
+		resetPassword,
+		updateEmailUser,
+		updatePasswordUser,
+		isLoading,
+		setIsLoading,
+	}
+
+	return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>
 }
