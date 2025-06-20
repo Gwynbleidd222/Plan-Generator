@@ -43,11 +43,13 @@ const Nav = () => {
 					className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>
 					<CiTimer className='text-white text-3xl' />
 				</Link>
-				<li className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>
-					<p className='text-white text-3xl' value='0'>
-						0
-					</p>
-				</li>
+				<Link 
+					to='/credits' 
+					className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>
+						<p className='text-white text-3xl' value='0'>
+							0
+						</p>
+				</Link>
 				<Link
 					to='/' 
 					className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>

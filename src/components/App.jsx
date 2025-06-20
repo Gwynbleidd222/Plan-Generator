@@ -11,6 +11,7 @@ import PrivateRoute from './PrivateRoute'
 import ExerciseGenerator from './PrivateLayout/ExerciseGenerator'
 import PlanGenerator from './PrivateLayout/PlanGenerator'
 import SavedPlans from './PrivateLayout/SavedPlans'
+import Credits from './PrivateLayout/Credits'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 							<Route element={<ExerciseGenerator/>} path='/exercise-generator'/>
 							<Route element={<PlanGenerator/>} path='/plan-generator'/>
 							<Route element={<SavedPlans/>} path='/saved-plans'/>
+							<Route element={<Credits/>} path='/credits'/>
 							
 						</Route>
 						<Route path='/signup' element={<Signup />} />
