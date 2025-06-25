@@ -2,17 +2,21 @@ import React, { useState } from 'react'
 import exerciseData from '../../dataExercise'
 import Modal from './Modal'
 import { Link } from 'react-router-dom'
+import { useCredits } from '../../context/CreditsContext'
 
 const ExerciseGenerator = () => {
 	const [selectedWeakness, setSelectedWeakness] = useState('')
 	const [selectedType, setSelectedType] = useState('')
 	const [generatedExercise, setGeneratedExercise] = useState('')
 	const [isOpen, setIsOpen] = useState(false)
+	const { deductCredit } = useCredits()
 
-	const getExercise = () => {
+	async function getExercise() {
 		const weaknessObj = exerciseData.flatMap(group => group.weaknesses).find(w => w.value === selectedWeakness)
 
 		if (!weaknessObj) return
+
+		await deductCredit(2, 'Wygenerowanie ćwiczenia')
 
 		const exercises = weaknessObj.types[selectedType] || []
 

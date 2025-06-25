@@ -12,28 +12,29 @@ import ExerciseGenerator from './PrivateLayout/ExerciseGenerator'
 import PlanGenerator from './PrivateLayout/PlanGenerator'
 import SavedPlans from './PrivateLayout/SavedPlans'
 import Credits from './PrivateLayout/Credits'
-
+import { CreditsProvider } from '../context/CreditsContext'
 
 function App() {
 	return (
 		<>
 			<Router>
 				<AuthProvider>
+					<CreditsProvider>
 					<Routes>
-						<Route element={<PrivateRoute/>}>
-							<Route element={<Dashboard/>} path='/' exact/>
-							<Route element={<Modal/>} path='/modal'></Route>
-							<Route element={<UpdateProfile/>} path='/update-profile'/>
-							<Route element={<ExerciseGenerator/>} path='/exercise-generator'/>
-							<Route element={<PlanGenerator/>} path='/plan-generator'/>
-							<Route element={<SavedPlans/>} path='/saved-plans'/>
-							<Route element={<Credits/>} path='/credits'/>
-							
+						<Route element={<PrivateRoute />}>
+							<Route element={<Dashboard />} path='/' exact />
+							<Route element={<Modal />} path='/modal'></Route>
+							<Route element={<UpdateProfile />} path='/update-profile' />
+							<Route element={<ExerciseGenerator />} path='/exercise-generator' />
+							<Route element={<PlanGenerator />} path='/plan-generator' />
+							<Route element={<SavedPlans />} path='/saved-plans' />
+							<Route element={<Credits />} path='/credits' />
 						</Route>
 						<Route path='/signup' element={<Signup />} />
 						<Route path='/login' element={<Login />} />
-						<Route path='/forgot-password' element={<ForgotPassword/>}/>
+						<Route path='/forgot-password' element={<ForgotPassword />} />
 					</Routes>
+					</CreditsProvider>
 				</AuthProvider>
 			</Router>
 		</>

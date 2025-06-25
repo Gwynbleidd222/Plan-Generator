@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import exerciseData from '../../dataExercise'
 import { independentExercises } from '../../dataExercise'
 import PowerliftingThreeDayPlan from './SchemeOfPlans.jsx/PowerliftingThreeDayPlan'
@@ -10,6 +10,7 @@ import { useAuth } from '../../context/AuthContext'
 import { ThreeDots } from 'react-loading-icons'
 import { saveTrainingPlan } from '../../firebaseUtilis'
 import { Link } from 'react-router-dom'
+import { useCredits } from '../../context/CreditsContext'
 
 const PlanGenerator = () => {
 	const [squatWeakness, setSquatWeaknes] = useState('')
@@ -19,6 +20,7 @@ const PlanGenerator = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [generatedPlan, setGeneratedPlan] = useState(null)
 	const { isLoading, setIsLoading } = useAuth()
+	const { deductCredit } = useCredits()
 
 	const getWeaknessOptions = category => {
 		const found = exerciseData.find(group => group.category === category)
@@ -27,6 +29,7 @@ const PlanGenerator = () => {
 
 	async function handleGenerate() {
 		setIsLoading(true)
+		
 		const squatData = exerciseData.find(g => g.category === 'Squat').weaknesses.find(w => w.value === squatWeakness)
 
 		const benchData = exerciseData.find(g => g.category === 'Bench').weaknesses.find(w => w.value === benchWeakness)
@@ -38,6 +41,8 @@ const PlanGenerator = () => {
 		if (!squatWeakness || !benchWeakness || !deadliftWeakness || !selectedScheme) {
 			return
 		}
+
+		await deductCredit(20, 'Wygenerowanie planu treningowego')
 
 		const schemeMap = {
 			PowerliftingThreeDayPlan: PowerliftingThreeDayPlan,
@@ -87,6 +92,7 @@ const PlanGenerator = () => {
 			setIsLoading(true)
 
 			setTimeout(() => {
+				
 				setGeneratedPlan(plan)
 				setIsOpen(true)
 				setBenchWeaknes('')

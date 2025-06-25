@@ -5,11 +5,13 @@ import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { CiTimer } from 'react-icons/ci'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate, Link } from 'react-router-dom'
-import { IoPersonOutline } from "react-icons/io5";
+import { IoPersonOutline } from 'react-icons/io5'
+import { useCredits } from '../../context/CreditsContext'
 
 const Nav = () => {
 	const [error, setError] = useState('')
 	const { logout } = useAuth()
+	const { credits } = useCredits()
 	const navigate = useNavigate()
 
 	async function handleLogout() {
@@ -39,19 +41,17 @@ const Nav = () => {
 					<GiNotebook className='text-white text-3xl' />
 				</Link>
 				<Link
-					to='/saved-plans' 
+					to='/saved-plans'
 					className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>
 					<CiTimer className='text-white text-3xl' />
 				</Link>
-				<Link 
-					to='/credits' 
+				<Link
+					to='/credits'
 					className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>
-						<p className='text-white text-3xl' value='0'>
-							0
-						</p>
+					<p className='text-white text-3xl'>{credits}</p>
 				</Link>
 				<Link
-					to='/' 
+					to='/'
 					className='h-full flex-1 flex items-center justify-center hover:bg-main-purple transition-colors duration-200 cursor-pointer'>
 					<IoPersonOutline className='text-white text-3xl' />
 				</Link>
