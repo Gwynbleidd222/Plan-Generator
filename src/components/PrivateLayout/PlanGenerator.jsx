@@ -20,7 +20,7 @@ const PlanGenerator = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [generatedPlan, setGeneratedPlan] = useState(null)
 	const { isLoading, setIsLoading } = useAuth()
-	const { deductCredit } = useCredits()
+	const { deductCredit, credits } = useCredits()
 
 	const getWeaknessOptions = category => {
 		const found = exerciseData.find(group => group.category === category)
@@ -29,7 +29,7 @@ const PlanGenerator = () => {
 
 	async function handleGenerate() {
 		setIsLoading(true)
-		
+
 		const squatData = exerciseData.find(g => g.category === 'Squat').weaknesses.find(w => w.value === squatWeakness)
 
 		const benchData = exerciseData.find(g => g.category === 'Bench').weaknesses.find(w => w.value === benchWeakness)
@@ -92,7 +92,6 @@ const PlanGenerator = () => {
 			setIsLoading(true)
 
 			setTimeout(() => {
-				
 				setGeneratedPlan(plan)
 				setIsOpen(true)
 				setBenchWeaknes('')
@@ -123,6 +122,11 @@ const PlanGenerator = () => {
 				</div>
 			</div>
 			<div className='flex w-full flex-col place-content-center place-items-center pt-8 lg:h-full  lg:w-1/2'>
+				{!isLoading && squatWeakness && benchWeakness && deadliftWeakness && selectedScheme && credits < 20 && (
+					<p className='text-red text-sm mt-2 max-w-sm text-center'>
+						Niewystarczająca liczba kredytów. Wygenerowanie planu kosztuje 20 kredytów.
+					</p>
+				)}
 				<div className='p-4 m-4 bg-dark-gray rounded-xl flex flex-col max-w-[432px] w-full shadow-l text-center'>
 					<h3 className='text-4xl'>Generator Planów</h3>
 					<div className='p-2 mt-6'>
@@ -184,7 +188,7 @@ const PlanGenerator = () => {
 						<button
 							onClick={handleGenerate}
 							className='p-4 mt-2 w-full text-md flex items-center justify-center bg-main-purple rounded-xl font-bold hover:bg-main-purple-hover transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed'
-							disabled={!squatWeakness || !benchWeakness || !deadliftWeakness || !selectedScheme}>
+							disabled={!squatWeakness || !benchWeakness || !deadliftWeakness || !selectedScheme || credits < 20}>
 							{isLoading ? <ThreeDots className='h-6 w-6' /> : 'Wygeneruj Plan - koszt 20 kredytów'}
 						</button>
 
@@ -215,6 +219,7 @@ const PlanGenerator = () => {
 						</Modal>
 					</div>
 				</div>
+				
 			</div>
 		</section>
 	)

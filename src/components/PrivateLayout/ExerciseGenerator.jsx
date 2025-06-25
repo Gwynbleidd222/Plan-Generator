@@ -3,13 +3,15 @@ import exerciseData from '../../dataExercise'
 import Modal from './Modal'
 import { Link } from 'react-router-dom'
 import { useCredits } from '../../context/CreditsContext'
+import { useAuth } from '../../context/AuthContext'
 
 const ExerciseGenerator = () => {
 	const [selectedWeakness, setSelectedWeakness] = useState('')
 	const [selectedType, setSelectedType] = useState('')
 	const [generatedExercise, setGeneratedExercise] = useState('')
 	const [isOpen, setIsOpen] = useState(false)
-	const { deductCredit } = useCredits()
+	const { deductCredit, credits } = useCredits()
+	const {isLoading} = useAuth()
 
 	async function getExercise() {
 		const weaknessObj = exerciseData.flatMap(group => group.weaknesses).find(w => w.value === selectedWeakness)
@@ -53,7 +55,10 @@ const ExerciseGenerator = () => {
 				</div>
 			</div>
 			<div className=' flex w-full flex-col place-content-center place-items-center pt-8 lg:h-full  lg:w-1/2'>
-				<div className='p-6 text-center  rounded-lg shadow-lg bg-dark-gray'>
+				{!isLoading && selectedWeakness && selectedType && credits < 2 && (
+					<p className='text-red text-center text-sm mt-2 max-w-sm'>Niewystarczająca liczba kredytów. Wygenerowanie ćwiczenia kosztuje 2 kredyty.</p>
+				)}
+				<div className='p-6 mt-2 text-center  rounded-lg shadow-lg bg-dark-gray'>
 					<h3 className='text-4xl'>Generator Ćwiczeń</h3>
 					<div className='p-2 mt-6'>
 						<p className='text-left p-2'>Słabość boju</p>
@@ -92,7 +97,7 @@ const ExerciseGenerator = () => {
 						<button
 							onClick={getExercise}
 							className='p-4 mt-2 w-full bg-main-purple rounded-xl font-bold hover:bg-main-purple-hover transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed'
-							disabled={!selectedWeakness || !selectedType}>
+							disabled={!selectedWeakness || !selectedType || credits < 2}>
 							Wygeneruj ćwiczenie - koszt 2 kredyty
 						</button>
 
@@ -107,6 +112,7 @@ const ExerciseGenerator = () => {
 						</Modal>
 					</div>
 				</div>
+				
 			</div>
 		</section>
 	)

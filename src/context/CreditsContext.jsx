@@ -2,12 +2,14 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { getAvailableCredits, saveCreditTransaction } from '../credits'
 import { useAuth } from './AuthContext'
 
+
 const CreditsContext = createContext()
 
 export const CreditsProvider = ({ children }) => {
 	const { currentUser } = useAuth()
 	const [credits, setCredits] = useState(0)
 	const [isLoadingCredits, setIsLoadingCredits] = useState(true)
+	
 
 	
 	const fetchAndSetCredits = useCallback(async () => {
@@ -23,6 +25,7 @@ export const CreditsProvider = ({ children }) => {
 			setCredits(currentTotalCredits)
 		} catch (error) {
 			console.error('Błąd podczas pobierania kredytów:', error)
+			
 			setCredits(0)
 		} finally {
 			setIsLoadingCredits(false)
