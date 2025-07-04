@@ -13,6 +13,7 @@ import PlanGenerator from './PrivateLayout/PlanGenerator'
 import SavedPlans from './PrivateLayout/SavedPlans'
 import Credits from './PrivateLayout/Credits'
 import { CreditsProvider } from '../context/CreditsContext'
+import '@stripe/react-stripe-js'
 
 function App() {
 	return (

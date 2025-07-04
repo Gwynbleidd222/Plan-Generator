@@ -1,25 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaCheck } from 'react-icons/fa'
 import { useCredits } from '../../context/CreditsContext'
-
+import StripeButton from './StripeButton'
+import { useSearchParams } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 const Credits = () => {
+	const [searchParams] = useSearchParams()
 	const { addCredits } = useCredits()
 
-        const handleBuyCredits = async amount => {
-                try {
-                        const success = await addCredits(amount, `Zakup ${amount} kredytów`)
+	useEffect(() => {
+		const success = searchParams.get('success')
+		const type = searchParams.get('type')
 
-                        if (success) {
-                                console.log(`Pomyślnie dodano ${amount} kredytów.`)
-                                
-                        } else {
-                                console.error('Nie udało się dodać kredytów. Sprawdź, czy jesteś zalogowany.')
-                        }
-                } catch (err) {        
-                        console.error('Błąd podczas zakupu kredytów:', err)
-                }
-        }
+		if (success === 'true' && type) {
+			const creditsAmount = parseInt(type, 10)
+
+			const processStripePurchase = async () => {
+				try {
+					const result = await addCredits(creditsAmount, `Zakup ${creditsAmount} kredytów przez Stripe`)
+					if (result) {
+						toast.success(`Dodano ${creditsAmount} kredytów!`)
+						console.log(`Dodano ${creditsAmount} kredytów`)
+						const newURL = new URL(window.location.href)
+						newURL.searchParams.delete('success')
+						newURL.searchParams.delete('type')
+						window.history.replaceState({}, '', newURL)
+					}
+				} catch (err) {
+					console.error('Błąd podczas dodawania kredytów:', err)
+				}
+			}
+
+			processStripePurchase()
+		}
+	}, [searchParams])
 
 	return (
 		<section className='max-w-7xl mx-auto  flex items-centr justify-center md:h-screen  flex-col text-white'>
@@ -37,11 +52,7 @@ const Credits = () => {
 					<p className='text-sm text-medium-gray'>
 						20 kredytów pozwoli Ci wygenerować jeden plan treningowy lub 10 ćwiczeń
 					</p>
-					<button
-						onClick={() => handleBuyCredits(20)}
-						className='p-4 mt-2 w-full text-md flex items-center justify-center bg-main-purple rounded-xl font-bold hover:bg-main-purple-hover transition-colors'>
-						Zakup
-					</button>
+					<StripeButton priceId='price_1RgjqAPCTScP3W8VB5fVxpyY' amount={20} />
 					<ul className='space-y-4'>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
@@ -66,11 +77,7 @@ const Credits = () => {
 					<p className='text-sm text-medium-gray'>
 						20 kredytów pozwoli Ci wygenerować jeden plan treningowy lub 10 ćwiczeń
 					</p>
-					<button 
-						onClick={() => handleBuyCredits(60)}
-						className='p-4 mt-2 w-full text-md flex items-center justify-center bg-main-purple rounded-xl font-bold hover:bg-main-purple-hover transition-colors'>
-						Zakup
-					</button>
+					<StripeButton priceId='price_1Rh68EPCTScP3W8V1Ex4D8kD' amount={60} />
 					<ul className='space-y-4'>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
@@ -95,11 +102,7 @@ const Credits = () => {
 					<p className='text-sm text-medium-gray'>
 						20 kredytów pozwoli Ci wygenerować jeden plan treningowy lub 10 ćwiczeń
 					</p>
-					<button
-						onClick={() => handleBuyCredits(120)} 
-						className='p-4 mt-2 w-full text-md flex items-center justify-center bg-main-purple rounded-xl font-bold hover:bg-main-purple-hover transition-colors'>
-						Zakup
-					</button>
+					<StripeButton priceId='price_1Rh6BuPCTScP3W8VHOvjNUN1' amount={120} />
 					<ul className='space-y-4'>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
@@ -115,9 +118,7 @@ const Credits = () => {
 						</li>
 					</ul>
 				</div>
-
 			</div>
-				
 		</section>
 	)
 }
