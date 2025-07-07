@@ -69,10 +69,10 @@ While not a commercial product, the app is built to showcase **front-end enginee
 ---
 
 ## 📷 Screenshots
+![Login Page](./screenshots/login.jpg)
+![Plan Generator](./screenshots/Plan-Generator.jpg)
 
 ```md
-![](./src/assets/login.jpg)
-![](./src/assets/Plan-Generator.jpg)
 
 ## 💡 Inspiration
 
