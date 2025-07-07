@@ -17,6 +17,9 @@ It includes a **credit system**, secure **user authentication**, and the ability
 While not a commercial product, the app is built to showcase **front-end engineering skills**, including React context management, Firebase integration, and Stripe-based payment simulation.
 
 ---
+## 📷 Screenshots
+![Login Page](./screenshots/login.jpg)
+![Plan Generator](./screenshots/Plan-Generator.jpg)
 
 ## 🚀 Key Features
 
@@ -68,9 +71,6 @@ While not a commercial product, the app is built to showcase **front-end enginee
 
 ---
 
-## 📷 Screenshots
-![Login Page](./screenshots/login.jpg)
-![Plan Generator](./screenshots/Plan-Generator.jpg)
 
 ```md
 
