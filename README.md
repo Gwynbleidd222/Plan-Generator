@@ -68,13 +68,11 @@ While not a commercial product, the app is built to showcase **front-end enginee
 
 ---
 
-## 📷 Screenshots (Optional)
-
-_Add some screenshots here to show off the UI/UX!_
+## 📷 Screenshots
 
 ```md
-![Login Page](/Exercise-Generator/src/assets/login.jpg)
-![Plan Generator](/Exercise-Generator/src/assets/Plan-Generator.jpg)
+![](./src/assets/login.jpg)
+![](./src/assets/Plan-Generator.jpg)
 
 ## 💡 Inspiration
 
