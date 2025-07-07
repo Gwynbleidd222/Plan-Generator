@@ -44,13 +44,13 @@ const Signup = () => {
 
 	return (
 		<>
-			<Header title='Załóż konto na exercise generator' />
+			<Header title='Załóż konto na Plan Generator' />
 			<section className='text-white flex items-centr justify-center h-screen flex-col lg:flex-row'>
 				<div className='flex w-full flex-col place-content-center place-items-center pt-8 lg:h-full lg:bg-gradient-to-r from-neutral-700 to-gray-900 lg:w-1/2'>
 					<div className=' px-4'>
 						<div className='max-w-[432px] mx-auto lg:max-w-[592px]'>
 							<h2 className='text-3xl mb-2 lg:mb-4'>
-								Stwórz swoje konto na exercise generator
+								Stwórz swoje konto na Plan Generator
 								<div className='flex items-center text-lg'></div>
 							</h2>
 							<p className='break-words'>Wprowadź swój adres email i hasło, aby się założyć konto.</p>

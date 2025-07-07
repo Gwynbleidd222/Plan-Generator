@@ -20,12 +20,13 @@ const Credits = () => {
 				try {
 					const result = await addCredits(creditsAmount, `Zakup ${creditsAmount} kredytów przez Stripe`)
 					if (result) {
-						toast.success(`Dodano ${creditsAmount} kredytów!`)
 						console.log(`Dodano ${creditsAmount} kredytów`)
 						const newURL = new URL(window.location.href)
 						newURL.searchParams.delete('success')
 						newURL.searchParams.delete('type')
 						window.history.replaceState({}, '', newURL)
+						toast.success(`Dodano ${creditsAmount} kredytów!`)
+						
 					}
 				} catch (err) {
 					console.error('Błąd podczas dodawania kredytów:', err)
@@ -75,21 +76,21 @@ const Credits = () => {
 						<p className=''> 60 kredytów</p>
 					</div>
 					<p className='text-sm text-medium-gray'>
-						20 kredytów pozwoli Ci wygenerować jeden plan treningowy lub 10 ćwiczeń
+						60 kredytów to idealny wybór, jeśli chcesz regularnie korzystać z aplikacji – wystarczy na kilka planów i wiele ćwiczeń.
 					</p>
 					<StripeButton priceId='price_1Rh68EPCTScP3W8V1Ex4D8kD' amount={60} />
 					<ul className='space-y-4'>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
-							<span className='text-medium-gray'>Dobre na start</span>
+							<span className='text-medium-gray'>Optymalny dla osób trenujących kilka razy w tygodniu</span>
 						</li>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
-							<span className='text-medium-gray'>Jeden plan treningowy</span>
+							<span className='text-medium-gray'>Do 3 planów treningowych</span>
 						</li>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
-							<span className='text-medium-gray'>10 ćwiczeń</span>
+							<span className='text-medium-gray'>Nawet 30 ćwiczeń</span>
 						</li>
 					</ul>
 				</div>
@@ -100,21 +101,21 @@ const Credits = () => {
 						<p className=''>120 kredytów</p>
 					</div>
 					<p className='text-sm text-medium-gray'>
-						20 kredytów pozwoli Ci wygenerować jeden plan treningowy lub 10 ćwiczeń
+						120 kredytów to opcja dla najbardziej zaangażowanych – oszczędzasz i masz pełną swobodę korzystania z funkcji.
 					</p>
 					<StripeButton priceId='price_1Rh6BuPCTScP3W8VHOvjNUN1' amount={120} />
 					<ul className='space-y-4'>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
-							<span className='text-medium-gray'>Dobre na start</span>
+							<span className='text-medium-gray'>Najlepszy stosunek ilości do ceny</span>
 						</li>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
-							<span className='text-medium-gray'>Jeden plan treningowy</span>
+							<span className='text-medium-gray'>Do 6 planów treningowych</span>
 						</li>
 						<li className='flex items-center gap-3'>
 							<FaCheck className='flex h-4 w-4 items-center justify-center rounded-full  text-main-purple' />
-							<span className='text-medium-gray'>10 ćwiczeń</span>
+							<span className='text-medium-gray'>Nawet 60 ćwiczeń</span>
 						</li>
 					</ul>
 				</div>

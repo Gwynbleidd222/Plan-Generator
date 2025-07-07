@@ -1,122 +1,97 @@
-# Authentication (Rejestracja użytkownika)
- a) Firebase
-    - Korzystam z Firebase Authentication, czyli usługi Firebase do rejestracji, logowania, resetu hasła itd.
-    
-- Stworzenie pliku .env.local aby mieć IP i inne dane tylko lokalnie w przypadku wrzucenia aplikacji na github
-    - stworzenie firebase.js pobranie z firebase
+# 💪 Plan Generator
 
-    ``import { initializeApp } from "firebase/app";``
-    ``import { getAuth } from "firebase/auth";``
+A web application for personalized strength training planning using credits, workout generation, and user account management.
 
-    - następnie stworzenie zmiennej firebaseConfig
-    - import.meta.env - to specjalny obiet w Vite (czyli bundlerze), który pozwala na dostęp do zmiennych środowiskowych (.env.local)
+## 🌐 Live Demo
 
-    przykład: 
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY, 
+➡️ [View App on Vercel](https://plan-generator-coral.vercel.app/login)
 
-    to mówi: Pobierz wartość z import.meta.env.VITE_FIREBASE_API_KEY, czyli Vite podkłada to co mam w .env.local
+---
 
-    To działa podczas uruchomienia aplikacji (npm run dev) Vite automatycznie wczytuje pliki .env.local i zamienia import.meta.env na odpowiednie wartości
+## 🧠 About the Project
 
-    W przeglądarce nie widać tych zmiennych jako import.meta.env bo one są zastąpione na sztywno podczas bundlowania
+Plan Generator is a React-based web app designed to help users generate personalized **training plans** and **individual exercises** based on their weaknesses and goals.
 
-    -const auth = getAuth(app); eksportuje auth czyli instalacje autoryzacji żeby móc z niej korzyustać w innych plikach (na przykład w AuthContext), dzięki getAuth mogę zrobić takie rzeczy jak: 
-    - `signInWithEmailAndPassword(auth, email, password)`
-    - `createUserWithEmailAndPassword(auth, email, password)`
-    - `signOut(auth)`
+It includes a **credit system**, secure **user authentication**, and the ability to **save generated plans** for future use.
 
-b) stworzenie komponentu [Signup.jsx] 
+While not a commercial product, the app is built to showcase **front-end engineering skills**, including React context management, Firebase integration, and Stripe-based payment simulation.
 
-    - importowanie useRef
+---
 
-useRef nie powoduje ponownego renderowania komponentu, gdy zmieniamy jego wartość. useRef służy do przechowywania wartości, które nie wpływają na interfejs użytkownika i nie wywołują ponownego renderowania. useRef jest alternatywą dla useState przydaje się właśnie w formularzach 
+## 🚀 Key Features
 
-`const emailRef = useRef()`
-`const passwordRef = useRef()`
-`const passwordConfirmRef = useRef()`
+### 🔐 Authentication
+- User registration and login
+- Protected routes with PrivateRoute logic
+- Profile management: change email and password
 
-Dzięki ref={emailRef} mogę potem pobrać wartość wpisaną przez użytkownika:
+### 🧠 Exercise Generator
+- Select a weak point and training type
+- Generates **one exercise** (costs **2 credits**)
 
-    - importowanie useState
+### 🏋️ Plan Generator
+- Select weaknesses in squat, bench, deadlift
+- Choose a training scheme (e.g., 4 days FBW, 3 days FBW)
+- Generates **full training plan** (costs **20 credits**)
 
-`const [error, setError] = useState('')`
-`const [loading, setLoading] = useState(false)`
+### 📦 Credit System
+- Credit-based usage model (2–20 credits per action)
+- Credits stored in Firestore per user
+- Includes **transaction history logic** and balance updates
 
-error – przechowuje treść błędu "Passwords do not match".
-loading – informacja, czy właśnie trwa operacja (np. rejestracja).
-setLoading(true) // ustawiamy, że trwa ładowanie
-setError('Passwords do not match') // pokazujemy błąd
+### 💳 Stripe Integration (Simulation)
+- Stripe checkout with 3 credit packages:
+  - 20 credits (Starter)
+  - 60 credits (Standard)
+  - 120 credits (Pro)
+- Simulated checkout with dynamic redirect and credit addition on success
 
-    - importowanie useNavigate - przekierowanie po udanej rejestracji
-    
-`const navigate = useNavigate()`
+### 📁 Saved Plans
+- Displays previously generated training plans
+- Plans are saved per user in Firestore
 
-To funkcja z react-router-dom.
-Przekierowuje użytkownika do innej strony.
+### 👤 User Profile
+- Update email and password
+- Logout button in navigation
 
-navigate('/') // przekierowanie na stronę główną po rejestracji (w tym przypadku dashboard, dzięki PrivateRoute nie da się tam wejść bez logowania/rejestracji ale o tym później)
+---
 
-    - async function handleSubmit(e) – obsługa formularza rejestracji
+## 🛠️ Technologies Used
 
-async function handleSubmit(e) {
-  e.preventDefault()
-}   
+- ⚛️ **React** with functional components and hooks
+- 🌐 **React Router v6** for routing
+- 🔥 **Firebase Auth & Firestore** for backend and auth
+- 💳 **Stripe (Test Mode)** for payment simulation
+- 🧠 **React Context API** for state management
+- 🎨 **Tailwind CSS** for styling
+- 📦 **Vercel** for deployment
 
-async oznacza, że funkcja działa asynchronicznie – możesz w niej używać await, czyli poczekać na zakończenie operacji, np. zapisu w Firebase.
-e.preventDefault() blokuje domyślne wysyłanie formularza (żeby nie przeładował strony).
+---
 
-    - Walidacja haseł 
+## 📷 Screenshots (Optional)
 
-if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-  return setError('Password do not match')
-}
+_Add some screenshots here to show off the UI/UX!_
 
-Sprawdza, czy oba hasła są takie same.
-Jeśli nie → ustawia błąd i przerywa działanie funkcji.
+```md
+![Login Page](/Exercise-Generator/src/assets/login.jpg)
+![Plan Generator](/Exercise-Generator/src/assets/Plan-Generator.jpg)
 
-    Rejestracja użytkownika
+## 💡 Inspiration
 
-`await signup(emailRef.current.value, passwordRef.current.value) navigate('/')`
-Wywołuje funkcję signup z AuthContext (która korzysta z Firebase).
+The idea for this app was originally inspired by a https://www.facebook.com/ExerciseGenerator project from 2022, which has since been abandoned. The original creators are no longer active, and the official page and social media presence are inactive.
 
-Po udanym utworzeniu konta → przekierowuje na /. (czyli do dashboardu)
+This version was built **from scratch** as a personal project to improve full-stack development skills and present a modern, clean, and fully working version of the concept. Screenshots and short videos from the original app served as a loose reference point.
 
-signup pochodzi z AuthContext 
-`const { signup } = useAuth()`
+# Clone the repo
+git clone https://github.com/Gwynbleidd222/Plan-Generator
 
-    Przyciski i inputy
-Inputy mają ref (czyli odwołanie do konkretnego pola, dzięki czemu można pobrać wartość).
+# Install dependencies
+npm install
 
-Przycisk ma disabled={loading} – nie da się go kliknąć, jeśli loading = true.
+# Add your environment variables in a `.env` file:
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_STRIPE_PUBLIC_KEY=...
 
-emailRef.current  // cały element <input>
-emailRef.current.value  // wartość wpisana w input (czyli np. "jan@wp.pl")
-
-    Dlaczego używamy useRef zamiast useState? 
-
-useRef nie powoduje ponownego renderowania komponentu, więc jest bardziej wydajny w prostych przypadkach (np. formularz).
-
-Idealny, jeśli tylko chcesz sięgnąć do aktualnej wartości inputa w momencie wysyłania formularza.
-
-
-
-START
-  │
-  ├── Kliknięcie "Sign up"
-  │       ↓
-  ├── e.preventDefault()
-  │       ↓
-  ├── Czy hasła są równe?
-  │       ├── NIE → Wyświetl błąd i STOP
-  │       └── TAK
-  │            ↓
-  ├── setLoading(true)
-  │       ↓
-  ├── signup(email, password)
-  │       ├── SUKCES → navigate('/')
-  │       └── BŁĄD → setError(error.message)
-  │
-  └── setLoading(false)
-        ↓
-      KONIEC
-
+# Start dev server
+npm run dev
