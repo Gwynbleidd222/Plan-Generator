@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaCheck } from 'react-icons/fa'
 import { useCredits } from '../../context/CreditsContext'
 import StripeButton from './StripeButton'
 import { useSearchParams } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
+import Modal from './Modal'
 
 const Credits = () => {
 	const [searchParams] = useSearchParams()
 	const { addCredits } = useCredits()
+	const [isOpen, setIsopen] = useState(false)
+	const [creditsAmount, setCreditsAmount] = useState(null)
 
 	useEffect(() => {
 		const success = searchParams.get('success')
@@ -20,13 +23,14 @@ const Credits = () => {
 				try {
 					const result = await addCredits(creditsAmount, `Zakup ${creditsAmount} kredytów przez Stripe`)
 					if (result) {
+						setCreditsAmount(creditsAmount)
 						console.log(`Dodano ${creditsAmount} kredytów`)
 						const newURL = new URL(window.location.href)
 						newURL.searchParams.delete('success')
 						newURL.searchParams.delete('type')
 						window.history.replaceState({}, '', newURL)
 						toast.success(`Dodano ${creditsAmount} kredytów!`)
-						
+						setIsopen(true)
 					}
 				} catch (err) {
 					console.error('Błąd podczas dodawania kredytów:', err)
@@ -119,6 +123,11 @@ const Credits = () => {
 						</li>
 					</ul>
 				</div>
+				<Modal open={isOpen} onClose={()=> setIsopen(false)}>
+					<div className='flex justify-center items-center flex-col mt-8 p-6  text-white text-center uppercase'>
+						<p className='text-xl text-center uppercase font-bold'>Do Twojego konta zostało dodane {creditsAmount} kredytów</p>
+					</div>
+				</Modal>
 			</div>
 		</section>
 	)
