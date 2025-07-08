@@ -19,7 +19,7 @@ const Modal = ({ children, open, onClose }) => {
 						onClick={onClose}
 					/>
 					<motion.div
-						className='relative z-50 max-w-sm  bg-dark-gray  p-10 rounded-lg shadow-lg text-white '
+						className='flex flex-col relative z-50  bg-dark-gray  p-10 rounded-lg shadow-lg text-white '
 						initial={{ scale: 0.95, opacity: 0 }}
 						animate={{ scale: 1, opacity: 1 }}
 						exit={{ scale: 0.95, opacity: 0 }}
@@ -34,7 +34,7 @@ const Modal = ({ children, open, onClose }) => {
 						
 						<button
 							onClick={onClose}
-							className='p-4 mt-4 w-full bg-main-purple rounded-xl font-bold hover:bg-main-purple-hover transition-colors'>
+							className='p-4 mt-4 xl:mx-auto w-full xl:w-1/2  bg-main-purple rounded-xl font-bold hover:bg-main-purple-hover transition-colors'>
 							Zamknij
 						</button>
 					</motion.div>

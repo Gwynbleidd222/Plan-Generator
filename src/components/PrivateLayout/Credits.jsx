@@ -3,7 +3,6 @@ import { FaCheck } from 'react-icons/fa'
 import { useCredits } from '../../context/CreditsContext'
 import StripeButton from './StripeButton'
 import { useSearchParams } from 'react-router-dom'
-import { toast } from 'react-hot-toast'
 import Modal from './Modal'
 
 const Credits = () => {
@@ -29,7 +28,6 @@ const Credits = () => {
 						newURL.searchParams.delete('success')
 						newURL.searchParams.delete('type')
 						window.history.replaceState({}, '', newURL)
-						toast.success(`Dodano ${creditsAmount} kredytów!`)
 						setIsopen(true)
 					}
 				} catch (err) {
@@ -80,7 +78,8 @@ const Credits = () => {
 						<p className=''> 60 kredytów</p>
 					</div>
 					<p className='text-sm text-medium-gray'>
-						60 kredytów to idealny wybór, jeśli chcesz regularnie korzystać z aplikacji – wystarczy na kilka planów i wiele ćwiczeń.
+						60 kredytów to idealny wybór, jeśli chcesz regularnie korzystać z aplikacji – wystarczy na kilka planów i
+						wiele ćwiczeń.
 					</p>
 					<StripeButton priceId='price_1Rh68EPCTScP3W8V1Ex4D8kD' amount={60} />
 					<ul className='space-y-4'>
@@ -105,7 +104,8 @@ const Credits = () => {
 						<p className=''>120 kredytów</p>
 					</div>
 					<p className='text-sm text-medium-gray'>
-						120 kredytów to opcja dla najbardziej zaangażowanych – oszczędzasz i masz pełną swobodę korzystania z funkcji.
+						120 kredytów to opcja dla najbardziej zaangażowanych – oszczędzasz i masz pełną swobodę korzystania z
+						funkcji.
 					</p>
 					<StripeButton priceId='price_1Rh6BuPCTScP3W8VHOvjNUN1' amount={120} />
 					<ul className='space-y-4'>
@@ -123,9 +123,11 @@ const Credits = () => {
 						</li>
 					</ul>
 				</div>
-				<Modal open={isOpen} onClose={()=> setIsopen(false)}>
-					<div className='flex justify-center items-center flex-col mt-8 p-6  text-white text-center uppercase'>
-						<p className='text-xl text-center uppercase font-bold'>Do Twojego konta zostało dodane {creditsAmount} kredytów</p>
+				<Modal open={isOpen} onClose={() => setIsopen(false)}>
+					<div className='mt-8 p-6 text-white text-center uppercase'>
+						<p className='text-xl text-center uppercase font-bold max-w-sm'>
+							Do Twojego konta zostało dodane {creditsAmount} kredytów
+						</p>
 					</div>
 				</Modal>
 			</div>

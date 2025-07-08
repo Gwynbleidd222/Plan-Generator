@@ -58,7 +58,7 @@ const SavedPlans = () => {
 					</div>
 				</div>
 			</div>
-			
+
 			<div className='w-full 2xl:w-1/2 p-4 max-h-[90vh] '>
 				{isLoading ? (
 					<div className='flex justify-center items-center h-full'>
@@ -87,8 +87,6 @@ const SavedPlans = () => {
 										</span>
 									)} */}
 									</div>
-
-									
 								</div>
 
 								<button
@@ -98,17 +96,17 @@ const SavedPlans = () => {
 								</button>
 
 								<Modal open={isOpen} onClose={() => setIsOpen(false)}>
-									<div className='flex justify-center items-center flex-col mt-8 p-6 text-white text-center'>
+									<div className='mt-8 p-6 text-white text-center'>
 										<div className='w-full overflow-y-scroll scrollbar-hidden max-h-[460px] pr-2'>
 											<h4 className='text-4xl uppercase'>plan treningowy</h4>
 											<div className='mt-8 w-full h-[1px] bg-black'></div>
-
+											<div className='xl:flex'>
 											{selectedPlan?.plan?.days?.map((dayObj, i) => (
-												<div key={i} className='text-left mt-4'>
-													<h5 className='text-2xl text-main-purple text-center font-bold'>
-														{dayObj.name.toUpperCase()}
+												<div key={i} className=' text-left mt-4 xl:pl-8'>
+													<h5 className='text-2xl text-main-purple text-center xl:text-left font-bold xl:mb-8 '>
+														{dayObj.name.replace(/(\D+)(\d+)/, '$1 $2').toUpperCase()}
 													</h5>
-													<ul className='list-none'>
+													<ul className='list-none '>
 														{dayObj.exercises.map((exercise, index) => (
 															<li className='mt-2' key={index}>
 																<span className='mr-2'>{index + 1}.</span>
@@ -118,6 +116,7 @@ const SavedPlans = () => {
 													</ul>
 												</div>
 											))}
+										</div>
 										</div>
 									</div>
 								</Modal>

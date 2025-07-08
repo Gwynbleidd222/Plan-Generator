@@ -199,9 +199,10 @@ const PlanGenerator = () => {
 									<div className='mt-8 w-full h-[1px] bg-black'></div>
 									{generatedPlan && (
 										<div className='text-left '>
+											<div className='xl:flex'>
 											{Object.entries(generatedPlan).map(([day, exercises]) => (
 												<div key={day} className='mt-4 '>
-													<h5 className='text-2xl text-main-purple text-center font-bold'>{day.toUpperCase()}</h5>
+													<h5 className='text-2xl text-main-purple text-center xl:text-left font-bold xl:mb-8'>{day.toUpperCase()}</h5>
 													<ul className='list-none'>
 														{exercises.map((exercise, index) => (
 															<li className='mt-2' key={index}>
@@ -212,6 +213,7 @@ const PlanGenerator = () => {
 													</ul>
 												</div>
 											))}
+											</div>
 										</div>
 									)}
 								</div>
