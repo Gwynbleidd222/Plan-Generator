@@ -17,6 +17,18 @@ It includes a **credit system**, secure **user authentication**, and the ability
 While not a commercial product, the app is built to showcase **front-end engineering skills**, including React context management, Firebase integration, and Stripe-based payment simulation.
 
 ---
+## 🧪 Testing Payments (Stripe)
+
+To simulate a card payment, use the following Stripe test data:
+
+- **Card Number:** `4242 4242 4242 4242`
+- **Name and Surname:** any (e.g., `Yamal`)
+- **Expiration Date:** any future (e.g., `12/34`)
+- **CVC:** any 3-digit (e.g., `123`)
+- **Zip Code:** any (e.g., `00-000`)
+
+🔐 Test data does not perform a real transaction.
+
 ## 📷 Screenshots
 ![Login Page](./screenshots/login.jpg)
 ![Plan Generator](./screenshots/Plan-Generator.jpg)

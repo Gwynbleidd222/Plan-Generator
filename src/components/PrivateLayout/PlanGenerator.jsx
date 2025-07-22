@@ -61,7 +61,8 @@ const PlanGenerator = () => {
 				independentExercises.back,
 				independentExercises.core,
 				independentExercises.foreArms,
-				independentExercises.glutes
+				independentExercises.glutes,
+				independentExercises.sholders,
 			)
 
 			try {

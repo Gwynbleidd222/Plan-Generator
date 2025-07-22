@@ -1,6 +1,6 @@
 import { getRandomFromArray } from '../../../exerciseUtilis'
 
-const PowerliftingThreeDayPlan = (squat, bench, deadlift, back, core, foreArms, glutes) => {
+const PowerliftingThreeDayPlan = (squat, bench, deadlift, back, core, foreArms, glutes, sholders) => {
 	const usedExercises = new Set()
 
 	return {
