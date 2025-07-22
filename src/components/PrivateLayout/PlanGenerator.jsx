@@ -202,7 +202,7 @@ const PlanGenerator = () => {
 										<div className='text-left '>
 											<div className='xl:flex'>
 											{Object.entries(generatedPlan).map(([day, exercises]) => (
-												<div key={day} className='mt-4 '>
+												<div key={day} className='mt-4 pl-4'>
 													<h5 className='text-2xl text-main-purple text-center xl:text-left font-bold xl:mb-8'>{day.toUpperCase()}</h5>
 													<ul className='list-none'>
 														{exercises.map((exercise, index) => (

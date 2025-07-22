@@ -102,7 +102,7 @@ const SavedPlans = () => {
 											<div className='mt-8 w-full h-[1px] bg-black'></div>
 											<div className='xl:flex'>
 											{selectedPlan?.plan?.days?.map((dayObj, i) => (
-												<div key={i} className=' text-left mt-4 xl:pl-8'>
+												<div key={i} className=' text-left mt-4 pl-4 xl:pl-8'>
 													<h5 className='text-2xl text-main-purple text-center xl:text-left font-bold xl:mb-8 '>
 														{dayObj.name.replace(/(\D+)(\d+)/, '$1 $2').toUpperCase()}
 													</h5>
