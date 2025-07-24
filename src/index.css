@@ -15,6 +15,31 @@ body {
     display: none;
   }
 
+  
+
+  .box-plan::before {
+    position: absolute;
+    top:0;
+    right: -35px;
+    height: 80px;
+    width: 35px;
+    background-color: hsl(242, 48%, 58%);
+    content: '';
+    
+  }
+
+  .box-plan::after {
+    position: absolute;
+    top:100%;
+    right: -60px;
+    height: 40px;
+    width: 40px;
+    rotate: 45deg;
+    background-color: #20212C;
+    content: '';
+    
+  }
+
   select {
     @apply bg-dark-gray text-white rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-main-purple hover:border-main-purple transition-colors;
   }

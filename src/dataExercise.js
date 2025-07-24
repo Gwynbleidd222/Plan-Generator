@@ -255,7 +255,7 @@ const exerciseData = [
 					],
 					izolowane: [
 						'Dumbell Around the world',
-						'TRX Triceps Extension',
+						
 						'Push up',
 						'Cable flys',
 						'Dumbbell Flys',
@@ -285,8 +285,8 @@ const exerciseData = [
 				types: {
 					wariacja: [
 						'3sc Paused Bench Press',
+						'4sc Paused Bench Press',
 						'3sc Paused Low Pinn Bench Press',
-						'3sc Paused High Pinn Bench Press',
 						'Dead Bench Press',
 					],
 					akcesoryjne: [
@@ -306,7 +306,7 @@ const exerciseData = [
 					],
 					izolowane: [
 						'Dumbell Around the world',
-						'TRX Triceps Extension',
+						
 						'Push up',
 						'Cable flys',
 						'Dumbbell Flys',
@@ -354,7 +354,7 @@ const exerciseData = [
 					],
 					izolowane: [
 						'Dumbell Around the world', 
-						'TRX Triceps Extension',
+						
 						'Push up',
 						'Cable flys',
 						'Dumbbell Flys',
@@ -407,7 +407,7 @@ const exerciseData = [
 						'dumbell skull crushers',
 						'dead stop skull crusher',
 						'tate press', 
-						'TRX Triceps Extension',
+						
 						'Push up',
 						'Cable Tate Press',
 						'Cable flys',
@@ -460,7 +460,7 @@ const exerciseData = [
 						'JM Press', 
 						'Smith JM Press',
 						'tate press', 
-						'TRX Triceps Extension',
+						
 						'Push up',
 						'Cable Tate Press',
 						'Cable flys',
@@ -507,7 +507,7 @@ const exerciseData = [
 						],
 						izolowane: [
 							'Dumbell Around the world', 
-							'TRX Triceps Extension',
+							
 							'Push up',
 							'Cable flys',
 							'Dumbbell Flys',
@@ -932,6 +932,7 @@ const independentExercises = {
 		'Barbell Skull Crusher',
 		'California Press',
 		'cable triceps overhead extensions',
+		'TRX Triceps Extension',
 	]
   }
 }

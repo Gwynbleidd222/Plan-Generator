@@ -26,7 +26,7 @@ const Nav = () => {
 	}
 
 	return (
-		<nav className='fixed w-full   bg-dark-gray text-white shadow-lg h-16'>
+		<nav className='fixed w-full   bg-dark-gray text-white shadow-lg h-16 z-40'>
 			<ul className='flex items-center justify-between  h-full lg:w-[800px] lg:mx-auto'>
 				<Link
 					to='/exercise-generator'

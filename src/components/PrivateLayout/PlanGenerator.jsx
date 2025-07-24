@@ -5,6 +5,7 @@ import PowerliftingThreeDayPlan from './SchemeOfPlans.jsx/PowerliftingThreeDayPl
 import PowerliftingWodyn from './SchemeOfPlans.jsx/PowerliftingWodyn'
 import PowerliftingFourDayPlan from './SchemeOfPlans.jsx/PowerliftingFourDayPlan'
 import PowerliftingUpperLowerPlan from './SchemeOfPlans.jsx/PowerliftingUpperLowerPlan'
+import PowerliftingThreeDayPlanPPFBW from './SchemeOfPlans.jsx/PowerliftingThreeDayPlanPPFWB'
 import Modal from './Modal'
 import { useAuth } from '../../context/AuthContext'
 import { ThreeDots } from 'react-loading-icons'
@@ -49,6 +50,7 @@ const PlanGenerator = () => {
 			PowerliftingFourDayPlan: PowerliftingFourDayPlan,
 			PowerliftingUpperLowerPlan: PowerliftingUpperLowerPlan,
 			PowerliftingWodyn: PowerliftingWodyn,
+			PowerliftingThreeDayPlanPPFBW: PowerliftingThreeDayPlanPPFBW,
 		}
 
 		if (schemeMap[selectedScheme]) {
@@ -72,6 +74,7 @@ const PlanGenerator = () => {
 					PowerliftingFourDayPlan: '4 dni - FBW',
 					PowerliftingUpperLowerPlan: '4 dni - Góra Dół',
 					PowerliftingWodyn: '3 dniowy plan (Wodyn)',
+					PowerliftingThreeDayPlanPPFBW: '3 dni Push-Pull-FBW'
 				}
 				const wrappedPlan = {
 					days: Object.entries(plan)
@@ -183,6 +186,7 @@ const PlanGenerator = () => {
 							<option value='PowerliftingWodyn'>3 dniowy plan (Wodyn)</option>
 							<option value='PowerliftingFourDayPlan'>4 dni - FBW</option>
 							<option value='PowerliftingUpperLowerPlan'>4 dni - Góra Dół</option>
+							<option value='PowerliftingThreeDayPlanPPFBW'>3 dni Push-Pull-FBW</option>
 						</select>
 					</div>
 					<div className='mt-6'>
