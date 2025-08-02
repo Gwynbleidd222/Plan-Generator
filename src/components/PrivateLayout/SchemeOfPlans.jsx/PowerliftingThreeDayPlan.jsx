@@ -29,7 +29,7 @@ const PowerliftingThreeDayPlan = (squat, bench, deadlift, back, core, foreArms, 
 			getRandomFromArray(bench.types?.akcesoryjne, usedExercises),
 			getRandomFromArray(deadlift.types?.akcesoryjne, usedExercises),
 			getRandomFromArray(back.backVertical, usedExercises),
-			getRandomFromArray(bench.types?.izolowane, usedExercises),
+			getRandomFromArray(foreArms.triceps, usedExercises),
 			getRandomFromArray(core.core, usedExercises),
 		].filter(Boolean),
 	}

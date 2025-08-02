@@ -255,7 +255,6 @@ const exerciseData = [
 					],
 					izolowane: [
 						'Dumbell Around the world',
-						
 						'Push up',
 						'Cable flys',
 						'Dumbbell Flys',
@@ -354,7 +353,6 @@ const exerciseData = [
 					],
 					izolowane: [
 						'Dumbell Around the world', 
-						
 						'Push up',
 						'Cable flys',
 						'Dumbbell Flys',
@@ -407,7 +405,6 @@ const exerciseData = [
 						'dumbell skull crushers',
 						'dead stop skull crusher',
 						'tate press', 
-						
 						'Push up',
 						'Cable Tate Press',
 						'Cable flys',
@@ -460,7 +457,6 @@ const exerciseData = [
 						'JM Press', 
 						'Smith JM Press',
 						'tate press', 
-						
 						'Push up',
 						'Cable Tate Press',
 						'Cable flys',
@@ -507,7 +503,6 @@ const exerciseData = [
 						],
 						izolowane: [
 							'Dumbell Around the world', 
-							
 							'Push up',
 							'Cable flys',
 							'Dumbbell Flys',
@@ -787,7 +782,6 @@ const independentExercises = {
 	  'Barbell Seal Row',
 	  'Dumbell Seal Row',
 	  'Incline Bench Dumbbell Seal Row',
-	  'Head supported Dumbbell Row',
       'contralateral dumbell row',
       'single arm dumbell row',
       'chest supported dumbell row',
