@@ -25,7 +25,6 @@ body {
     width: 35px;
     background-color: hsl(242, 48%, 58%);
     content: '';
-    
   }
 
   .box-plan::after {
@@ -37,9 +36,12 @@ body {
     rotate: 45deg;
     background-color: #20212C;
     content: '';
-    
   }
 
   select {
     @apply bg-dark-gray text-white rounded-md border border-gray-700 focus:outline-none focus:ring-2 focus:ring-main-purple hover:border-main-purple transition-colors;
+  }
+
+  @media (min-width: 640px) {
+    
   }

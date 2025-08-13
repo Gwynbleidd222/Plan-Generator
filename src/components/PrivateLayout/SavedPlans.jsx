@@ -75,11 +75,11 @@ const SavedPlans = () => {
 							<div
 								key={plan.id}
 								className=' p-4 m-4 bg-dark-gray text-center rounded-xl  max-w-[432px] w-full shadow-lg'>
-								<div className='relative flex justify-between text-lg mb-20'>
-									<p className='absolute top-0 left-0 font-bold p-4'>
+								<div className='relative text-lg mb-20 '>
+									<p className='absolute top-0 left-0 font-bold p-4  text-sm sm:text-lg'>
 										{plan.createdAt ? plan.createdAt.toDate().toLocaleDateString('pl-PL') : 'Brak daty'}
 									</p>
-									<p className='box-plan absolute top-0 -right-[15px] bg-main-purple p-4'>Plan Treningowy</p>
+									<p className='box-plan absolute top-0 -right-[15px] bg-main-purple p-2 sm:p-4 overflow-hidden sm:overflow-visible'>Plan Treningowy</p>
 								</div>
 								<h3 className='text-3xl mb-2 lg:mb-4'>{plan.name}</h3>
 								<p>Zastosowane filtry:</p>
