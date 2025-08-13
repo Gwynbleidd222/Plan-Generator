@@ -570,7 +570,7 @@ const exerciseData = [
 						'Dumbbell Single leg RDL', 
 						'Barbell Single leg RDL',
 						'Single leg barbell RDL',
-						'Single leg dumbbell RDL',  
+						  
 						'Hip Drop Box', 
 						'One Leg Hip Thrust', 
 						'One Leg Glute Bridge',
@@ -613,7 +613,7 @@ const exerciseData = [
 						'Dumbbell Single leg RDL', 
 						'Barbell Single leg RDL',
 						'Single leg barbell RDL',
-						'Single leg dumbbell RDL',  
+						  
 						'Hip Drop Box', 
 						'One Leg Hip Thrust', 
 						'One Leg Glute Bridge',
@@ -652,7 +652,7 @@ const exerciseData = [
 						'Dumbbell Single leg RDL', 
 						'Barbell Single leg RDL',
 						'Single leg barbell RDL',
-						'Single leg dumbbell RDL',  
+						  
 						'Hip Drop Box', 
 						'One Leg Hip Thrust', 
 						'One Leg Glute Bridge',
@@ -689,7 +689,7 @@ const exerciseData = [
 						'Dumbbell Single leg RDL', 
 						'Barbell Single leg RDL',
 						'Single leg barbell RDL',
-						'Single leg dumbbell RDL',  
+						  
 						'Hip Drop Box', 
 						'One Leg Hip Thrust', 
 						'One Leg Glute Bridge',
@@ -726,7 +726,7 @@ const exerciseData = [
 						'Dumbbell Single leg RDL', 
 						'Barbell Single leg RDL',
 						'Single leg barbell RDL',
-						'Single leg dumbbell RDL',  
+						  
 						'Hip Drop Box', 
 						'One Leg Hip Thrust', 
 						'One Leg Glute Bridge',
@@ -761,7 +761,7 @@ const exerciseData = [
 						'Dumbbell Single leg RDL', 
 						'Barbell Single leg RDL',
 						'Single leg barbell RDL',
-						'Single leg dumbbell RDL',  
+						 
 						'Hip Drop Box', 
 						'One Leg Hip Thrust', 
 						'One Leg Glute Bridge',
@@ -859,7 +859,6 @@ const independentExercises = {
 		'Band Resiseted Hollowbody',
 		'Weighted Plank',
 		'Bear Sholder Tap',
-		'band resisted hollow body',
 		'Allahy',
 		'Ab Wheel Rolout',
 		'Pall Of Press',
